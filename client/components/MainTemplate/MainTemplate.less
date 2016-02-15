@@ -1,14 +1,17 @@
 .MainTemplate {
-
+  .make-row();
   height: 100%;
+  margin: 0 auto;
 
   .wrapper {
-    .make-row();
+    .make-md-column(9);
+    .make-lg-column(10);
   }
 
   .main {
-    color: red;
-    .make-column(9);
+    height: 500px;
+    position: relative;
+    overflow:hidden;
   }
 
 }

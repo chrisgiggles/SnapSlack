@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "history": "^2.0.0",
+    "perfect-scrollbar": "^0.6.10",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-mixin": "^2.0.2",
