@@ -10,12 +10,11 @@ import Sidebar from './../Sidebar/Sidebar.jsx';
 class MainTemplate extends React.Component {
     componentDidMount() {
         const mainWindow = ReactDOM.findDOMNode(this.refs.mainWindow);
-        PS.initialize(mainWindow);
+
     }
 
     componentWillUnmount() {
         const mainWindow = ReactDOM.findDOMNode(this.refs.mainWindow);
-        PS.destroy(mainWindow);
     }
 
     render() {

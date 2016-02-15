@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PS from 'perfect-scrollbar';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
 import { Messages } from './../../../common/MessagesCollection.js';
 
-
 export default class ChatView extends React.Component {
+
+    componentDidMount() {
+        const el = ReactDOM.findDOMNode(this);
+        PS.initialize(el);
+        el.scrollTop = el.scrollHeight;
+    }
 
     componentWillUpdate() {
         const el = ReactDOM.findDOMNode(this);
         this.shouldScroll = el.scrollTop + el.offsetHeight === el.scrollHeight;
+        //Can't use setstate here... using this.shouldScroll for the moment
     }
 
     componentDidUpdate() {
@@ -17,6 +24,14 @@ export default class ChatView extends React.Component {
             const el = ReactDOM.findDOMNode(this);
             el.scrollTop = el.scrollHeight;
         }
+        else {
+            console.log("Scroll down to read new messages");
+        }
+    }
+
+    componentWillUnmount() {
+        const el = ReactDOM.findDOMNode(this);
+        PS.destroy(el);
     }
 
     getMeteorData() {
