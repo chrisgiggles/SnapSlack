@@ -1,5 +1,5 @@
 import React from 'react';
-import { Messages } from './../../../common/MessagesCollection.js';
+import { Messages } from './../../../common/Messages/MessagesCollection.js';
 
 
 class MessageForm extends React.Component {
