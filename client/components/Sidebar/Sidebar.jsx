@@ -2,15 +2,20 @@ import React from 'react';
 import { Link } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
+import Gravatar from './../Gravatar/Gravatar.jsx';
 import AccountsUIWrapper from './../AccountsUIWrapper/AccountsUIWrapper.jsx';
 import { Channels } from './../../../common/Channels/ChannelsCollection.js';
 
 export default class Sidebar extends React.Component {
 
     getMeteorData() {
-        const handle = Meteor.subscribe('channels', Meteor.userId());
-        if (handle.ready) {
-            return { channels: Channels.find({}).fetch() };
+        const channelsHandle = Meteor.subscribe('channels', Meteor.userId());
+        const usersHandle = Meteor.subscribe('users');
+        if (channelsHandle.ready && usersHandle.ready) {
+            return {
+                channels: Channels.find({}).fetch(),
+                user: Meteor.users.find({_id: Meteor.userId()}).fetch()
+            };
         }
     }
 
@@ -19,10 +24,11 @@ export default class Sidebar extends React.Component {
             return <li key={channel._id}><Link to={"/channel/" + channel._id}>{channel.name}</Link></li>;
         });
 
-        const isReady = this.data.channels ? channels : "Loading channels";
+        const channelsReady = this.data.channels ? channels : "Loading channels";
 
         return (
             <div className="Sidebar">
+                <Gravatar userId={Meteor.userId()}/>
                 <AccountsUIWrapper/>
                 <ul>
                     <li><h3>Menu</h3></li>
@@ -30,7 +36,7 @@ export default class Sidebar extends React.Component {
                 </ul>
                 <ul>
                     <li><h3>Channels</h3></li>
-                    { isReady }
+                    { channelsReady }
                 </ul>
             </div>
         );

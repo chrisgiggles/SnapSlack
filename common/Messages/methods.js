@@ -1,7 +1,7 @@
 import { Messages } from './MessagesCollection.js';
 
 Meteor.methods({
-    newMessage: function(text) {
+    newMessage: function(channelId, text) {
         if( !Meteor.userId() ) {
             throw new Meteor.Error("not-authorized", "You are not logged in");
         }
@@ -11,7 +11,8 @@ Meteor.methods({
                 time: new Date(),
                 userId: Meteor.userId(),
                 userName: Meteor.user().username,
-                text: text
+                text: text,
+                channelId: channelId
             });
         }
     }

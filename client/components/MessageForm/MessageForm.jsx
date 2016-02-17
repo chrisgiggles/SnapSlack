@@ -8,14 +8,16 @@ class MessageForm extends React.Component {
         e.preventDefault();
 
         const text = e.target[0].value;
+        const channelId = this.props.channelId;
 
         if(text) {
-            Meteor.call('newMessage', text);
+            Meteor.call('newMessage', channelId, text);
             e.target[0].value = '';
         }
     }
 
     render() {
+        console.log("MessageForm render this.props.channelId -->", this.props.channelId);
         return (
             <form action="#" onSubmit={ (e) => {this.handleSubmit(e)} }>
                 <input type="text"/><input type="submit"/>

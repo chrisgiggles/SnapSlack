@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PS from 'perfect-scrollbar';
 import { Messages } from './../../../common/Messages/MessagesCollection.js';
-import MessageForm from './../MessageForm/MessageForm.jsx';
 import Header from './../Header/Header.jsx';
 import Sidebar from './../Sidebar/Sidebar.jsx';
 
@@ -15,7 +14,6 @@ class MainTemplate extends React.Component {
                     <section className="main" ref="mainWindow">
                         {this.props.children}
                     </section>
-                    <MessageForm/>
                 </section>
             </div>
         );

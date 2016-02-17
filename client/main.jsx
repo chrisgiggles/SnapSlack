@@ -19,6 +19,7 @@ Meteor.startup( () => {
             <Route path="/" component={ App }>
                 <IndexRoute component={ ChannelDashboard } />
                 <Route path="channel/:channelId" component={ ChatView } />
+                <Route path="settings" component={ Test } />
             </Route>
         </Router>, document.getElementById('app'));
 });
