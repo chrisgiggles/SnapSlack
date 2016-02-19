@@ -16,6 +16,7 @@
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-mixin": "^2.0.2",
-    "react-router": "^2.0.0-rc5"
+    "react-router": "^2.0.0-rc5",
+    "react-scrollbar": "^0.3.2"
   }
 }

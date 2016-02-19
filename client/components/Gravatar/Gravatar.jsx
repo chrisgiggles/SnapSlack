@@ -1,7 +1,6 @@
 import React from 'react';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
-import md5 from 'md5';
 
 export default class Gravatar extends React.Component {
 
@@ -10,10 +9,21 @@ export default class Gravatar extends React.Component {
     }
 
     render() {
-        const email = this.data.user[0].emails[0].address;
-        const hash = md5(email);
-        const url = `http://www.gravatar.com/avatar/${hash}?d=identicon`;
-        return <img src={url} alt="" className="Gravatar"/>;
+        let color = '';
+        let letter = '';
+        if (this.data.user[0] !== undefined) {
+            color = `#${this.data.user[0].profileColor}`;
+            letter = this.data.user[0].username[0].toUpperCase();
+        } else {
+            color = "#000";
+            letter = 'X';
+        }
+
+        const style = {
+            backgroundColor: color
+        };
+
+        return <div style={style} className="Avatar">{letter}</div>;
     }
 }
 

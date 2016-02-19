@@ -19,6 +19,7 @@ export default class ChatView extends React.Component {
     componentWillUpdate() {
         const el = ReactDOM.findDOMNode(this);
         this.shouldScroll = el.scrollTop + el.offsetHeight === el.scrollHeight;
+        //Can't use setState here. Using an outside state variable in the meantime
     }
 
     componentDidUpdate() {
@@ -42,17 +43,16 @@ export default class ChatView extends React.Component {
         const id = this.props.params.channelId;
         const messageHandler = Meteor.subscribe('messages');
         //const handler = Meteor.subscribe('channel', id); //This doesn't matter... why?
-        
+
         if (messageHandler.ready) {
             data = {
                 channel: Channels.find({_id: id}).fetch(),
                 messages: Messages.find({channelId: id}).fetch()
             };
-        }
 
-        if (this.data.channel) {
-            data.users = data.channel[0].users;
-            console.log("ChatView getMeteorData data -->", data);
+            if (this.data.channel) {
+                data.users = data.channel[0].users;
+            }
         }
 
         return data;
@@ -60,20 +60,15 @@ export default class ChatView extends React.Component {
 
 
     render() {
-
         if (this.data.channel[0] === undefined) {
             return(<p>Loading</p>);
         }
 
-        //console.log("ChatView  this.data.users -->", this.data.users);
-
         const messages = this.data.messages.map((msg, i) => {
-            console.log("ChatView  msg -->", msg.userId);
-
             const userId = this.data.users.filter( user => {
                 return msg.userId === user;
             })[0];
-            
+
             return (
                 <li key={i}>
                     <Gravatar userId={userId}/>
@@ -90,7 +85,6 @@ export default class ChatView extends React.Component {
             <div className="ChatView">
                 <ul>{messages}</ul>
                 <MessageForm channelId={this.props.params.channelId}/>
-
             </div>
         );
     }

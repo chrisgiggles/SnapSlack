@@ -14,8 +14,12 @@ class ChannelCreate extends React.Component {
         switch (value) {
             case 'name':
                 this.setState({name: e.target.value});
+                break;
             case 'description':
                 this.setState({description: e.target.value});
+                break;
+            default:
+                break;
         }
     }
 
@@ -33,12 +37,20 @@ class ChannelCreate extends React.Component {
 
     render() {
         return (
-            <form action="#" onSubmit={ (e) => {this.handleSubmit(e)} }>
+            <form
+                action="#"
+                onSubmit={ (e) => {this.handleSubmit(e)} }>
                 <label htmlFor="name">Name</label>
-                <input id="name" type="text" onChange={ (e) => {this.handleChange(e, 'name')} } />
+                <input
+                    id="name"
+                    type="text"
+                    onChange={ (e) => {this.handleChange(e, 'name')} } />
                 <br/>
                 <label htmlFor="description">Description</label>
-                <input id="description" type="text" onChange={ (e) => {this.handleChange(e, 'description')} } />
+                <input
+                    id="description"
+                    type="text"
+                    onChange={ (e) => {this.handleChange(e, 'description')} } />
                 <input type="submit"/>
             </form>
         );

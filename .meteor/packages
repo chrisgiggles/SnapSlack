@@ -18,7 +18,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 grove:less
 react-meteor-data
-accounts-ui-unstyled
 accounts-password
 accounts-google
 meteortoys:allthings
+accounts-ui

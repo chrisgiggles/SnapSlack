@@ -10,5 +10,5 @@ Meteor.publish('messages', function() {
 });
 
 Meteor.publish('users', function() {
-    return Meteor.users.find({}, {fields: {'emails': 1, 'username': 1}});
+    return Meteor.users.find({}, {fields: {'emails': 1, 'username': 1, profileColor: 1}});
 });
