@@ -1,12 +1,16 @@
 import React from 'react';
-
+import randomColor from './../../../common/utils/randomColor.js';
 
 class Test extends React.Component {
     render() {
-        console.log("test render {this.context -->", this.props.params.channelId);
+    	console.log('Test randomColor -->', randomColor());
+
+    	styles = {
+    		backgroundColor: "#" + randomColor()
+    	}
 
         return (
-            <div>Hello World</div>
+            <div style={styles}>Hello World</div>
         );
     }
 }

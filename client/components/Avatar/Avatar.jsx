@@ -12,7 +12,7 @@ export default class Gravatar extends React.Component {
         let color = '';
         let letter = '';
         if (this.data.user[0] !== undefined) {
-            color = `#${this.data.user[0].profileColor}`;
+            color = this.data.user[0].profileColor;
             letter = this.data.user[0].username[0].toUpperCase();
         } else {
             color = "#000";

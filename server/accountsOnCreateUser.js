@@ -1,5 +1,7 @@
+import randomColor from './../common/utils/randomColor.js';
+
 Accounts.onCreateUser(function(options, user) {
-    user.profileColor = "585BD6";
+    user.profileColor = randomColor( Math.floor(Math.random() * 360) );
 
     if (options.profile)
         user.profile = options.profile;

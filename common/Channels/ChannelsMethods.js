@@ -13,5 +13,16 @@ Meteor.methods({
             users: [Meteor.userId()],
             messages: []
         });
+    },
+
+    joinChannel: function(channelId) {
+        if( !Meteor.userId() ) {
+            throw new Meteor.Error("not-authorized", "You are not logged in");
+        }
+
+        const exists = Channels.find({channelId});
+        console.log(exists)
+
+        //Channels.update(channelId, { $addToSet: {users: Meteor.userId()} });
     }
 })

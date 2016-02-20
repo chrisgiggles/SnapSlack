@@ -6,7 +6,7 @@ import reactMixin from 'react-mixin';
 import { Channels } from './../../../common/Channels/ChannelsCollection.js';
 import { Messages } from './../../../common/Messages/MessagesCollection.js';
 import MessageForm from './../MessageForm/MessageForm.jsx';
-import Gravatar from './../Gravatar/Gravatar.jsx';
+import Avatar from './../Avatar/Avatar.jsx';
 
 export default class ChatView extends React.Component {
 
@@ -71,7 +71,7 @@ export default class ChatView extends React.Component {
 
             return (
                 <li key={i}>
-                    <Gravatar userId={userId}/>
+                    <Avatar userId={userId}/>
                     <div className="message">
                         <span className="meta">{msg.userName}</span>
                         {/*- { msg.time.getHours() }:{ msg.time.getMinutes() }</span>*/}

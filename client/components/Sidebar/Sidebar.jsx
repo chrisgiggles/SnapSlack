@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
-import Gravatar from './../Gravatar/Gravatar.jsx';
+import Avatar from './../Avatar/Avatar.jsx';
 import AccountsUIWrapper from './../AccountsUIWrapper/AccountsUIWrapper.jsx';
 import { Channels } from './../../../common/Channels/ChannelsCollection.js';
 
@@ -28,7 +28,7 @@ export default class Sidebar extends React.Component {
 
         return (
             <div className="Sidebar">
-                <Gravatar userId={Meteor.userId()}/>
+                <Avatar userId={Meteor.userId()}/>
                 <AccountsUIWrapper/>
                 <ul>
                     <li><h3>Menu</h3></li>
