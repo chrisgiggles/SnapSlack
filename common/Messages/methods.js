@@ -15,6 +15,14 @@ Meteor.methods({
                 channelId: channelId
             });
         }
+    },
+
+    deleteMessages: function(channelId) {
+        if( !Meteor.userId() ) {
+            throw new Meteor.Error("not-authorized", "You are not logged in");
+        }
+
+        Messages.remove({channelId: channelId});
     }
 
 });
