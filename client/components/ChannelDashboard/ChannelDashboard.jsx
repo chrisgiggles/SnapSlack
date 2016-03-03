@@ -5,21 +5,22 @@ import reactMixin from 'react-mixin';
 import { Channels } from './../../../common/Channels/ChannelsCollection.js';
 import ChannelCreate from './../ChannelCreate/ChannelCreate.jsx'
 import ChannelJoin from './../ChannelJoin/ChannelJoin.jsx';
+import ChannelList from './../ChannelList/ChannelList.jsx';
 
 export default class ChannelDashboard extends React.Component {
     getMeteorData() {
         const handler = Meteor.subscribe('channels');
         if( handler.ready ) {
             return {
-                channels: Channels.find({ admin: Meteor.userId() }).fetch()
+                adminChannels: Channels.find({ admin: Meteor.userId() }).fetch(),
+                allChannels: Channels.find({}).fetch()
             };
         }
     }
 
     render() {
 
-        const adminChannels = this.data.channels.map( (channel, i) => {
-            console.log(channel)
+        const adminChannels = this.data.adminChannels.map( (channel, i) => {
             return(
                 <li key={i}>
                     <Link to={"/channel/" + channel._id + "/admin"}>
@@ -37,6 +38,7 @@ export default class ChannelDashboard extends React.Component {
                 <p>TODO: Should be able to send invites</p>
                 <h3>Send a request to join a channel</h3>
                 <ChannelJoin />
+                <ChannelList channels={this.data.allChannels} />
                 <h3>Admin</h3>
                 <p>Delete, change name, kick members, add admins</p>
                 {adminChannels ? adminChannels : <p>You have not created any channels yet</p>}

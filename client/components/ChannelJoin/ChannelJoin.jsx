@@ -5,7 +5,7 @@ class ChannelJoin extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		const key = this.refs.key.value.trim()
+		const key = this.refs.key.value.trim();
 
         if ( key ) {
             console.log("ChannelJoin handleSubmit -->", key);

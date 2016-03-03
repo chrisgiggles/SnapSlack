@@ -1,11 +1,17 @@
 .Header {
-  .header-inner {
-    //.make-column(12);
-    .clearfix();
-  }
+  position: fixed;
+  background: @dark-primary;
+  color: @white;
+  height: 60px;
+  width: 100%;
+  line-height: 60px;
 
-  .header-inner h2 {
-    float: left;
+  .logo {
+    height: 60px;
+    .make-lg-column(2);
+    img {
+      height: 30px;
+      margin-top: 18px;
+    }
   }
-
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
 
-import App from './components/MainTemplate/MainTemplate.jsx';
+import App from './components/App/App.jsx';
 import ChatView from './components/ChatView/ChatView.jsx';
 import ChannelDashboard from './components/ChannelDashboard/ChannelDashboard.jsx';
 import ChannelAdmin from './components/ChannelAdmin/ChannelAdmin.jsx';

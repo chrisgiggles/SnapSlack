@@ -9,7 +9,7 @@ export default class ChannelAdmin extends React.Component {
 
     getMeteorData() {
         const handler = Meteor.subscribe('channels');
-        if( handler.ready ) {
+        if ( handler.ready ) {
             return {
                 channels: Channels.find({ admin: Meteor.userId() }).fetch()
             };
@@ -27,7 +27,7 @@ export default class ChannelAdmin extends React.Component {
         const channelMeta = {
             name: this.refs.name.value,
             desc: this.refs.desc.value
-        }
+        };
 
         if ( !channelMeta.name.trim() ) {
             channelMeta.name = channel.name;
@@ -41,7 +41,6 @@ export default class ChannelAdmin extends React.Component {
     }
 
     render() {
-        console.log(this.context.router)
         const propsChannelId = this.props.params.channelId;
 
         const channel = this.data.channels.filter(channel => {
@@ -49,7 +48,7 @@ export default class ChannelAdmin extends React.Component {
         })[0];
 
         if (channel === undefined) {
-            return <p>loading</p>;
+            return <p>Loading</p>;
         }
 
         return (
@@ -72,6 +71,6 @@ export default class ChannelAdmin extends React.Component {
 
 ChannelAdmin.contextTypes = {
     router: React.PropTypes.object
-}
+};
 
 reactMixin(ChannelAdmin.prototype, ReactMeteorData);

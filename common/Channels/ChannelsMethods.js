@@ -11,7 +11,6 @@ Meteor.methods({
             description: channel.description,
             admin: Meteor.userId(),
             users: [Meteor.userId()],
-            messages: []
         });
     },
 
@@ -49,7 +48,6 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized", "You are not logged in");
         }
 
-        console.log(channelMeta)
         if (Channels.find({_id: channelId}, { admin: { $elemMatch: {$eq: Meteor.userId()} } }).count() > 0) {
             Channels.update(channelId, {$set: {name: channelMeta.name, description: channelMeta.desc}});
         } else {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//This should be replaced with a pure react component,
+//This should be entirely replaced with pure react components,
 //It depends on Blaze (and probably jQuery) for the moment
 class AccountsUIWrapper extends React.Component {
     componentDidMount () {

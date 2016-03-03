@@ -9,11 +9,11 @@ import { Channels } from './../../../common/Channels/ChannelsCollection.js';
 export default class Sidebar extends React.Component {
 
     getMeteorData() {
-        const channelsHandle = Meteor.subscribe('channels', Meteor.userId());
+        const channelsHandle = Meteor.subscribe('channels');
         const usersHandle = Meteor.subscribe('users');
         if (channelsHandle.ready && usersHandle.ready) {
             return {
-                channels: Channels.find({}).fetch(),
+                channels: Channels.find({ users: Meteor.userId() }).fetch(),
                 user: Meteor.users.find({_id: Meteor.userId()}).fetch()
             };
         }
@@ -28,12 +28,6 @@ export default class Sidebar extends React.Component {
 
         return (
             <div className="Sidebar">
-                <Avatar userId={Meteor.userId()}/>
-                <AccountsUIWrapper/>
-                <ul>
-                    <li><h3>Menu</h3></li>
-                    <li><Link to='/'>Dashboard</Link></li>
-                </ul>
                 <ul>
                     <li><h3>Channels</h3></li>
                     { channelsReady }

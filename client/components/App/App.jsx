@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PS from 'perfect-scrollbar';
-import { Messages } from './../../../common/Messages/MessagesCollection.js';
 import Header from './../Header/Header.jsx';
 import Sidebar from './../Sidebar/Sidebar.jsx';
 
@@ -9,19 +7,16 @@ class MainTemplate extends React.Component {
     render() {
         return (
             <div className="MainTemplate">
-                <Sidebar className="sidebar"/>
-                <section className="wrapper">
+                <Header />
+                <div className="main-wrapper">
+                    <Sidebar />
                     <section className="main" ref="mainWindow">
                         {this.props.children}
                     </section>
-                </section>
+                </div>
             </div>
         );
     }
 }
 
 export default MainTemplate;
-
-//<Header/>
-
-//<ChatView/>
