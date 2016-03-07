@@ -305,3 +305,15 @@
     background-size: @width-1x @height-1x;
   }
 }
+
+.button () {
+  background: @primary;
+  color: @white;
+  font-weight: 500;
+  padding: 10px 20px;
+  text-decoration: none;
+
+  &:hover {
+    background: darken(@primary, 10);
+  }
+}

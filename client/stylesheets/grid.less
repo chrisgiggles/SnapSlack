@@ -125,3 +125,10 @@
     right: percentage((@columns / @grid-columns));
   }
 }
+ ////////////////////////////////////////////
+.make-md-padding(@columns) {
+  @media (min-width: @screen-md-min) {
+    padding-left: percentage((@columns / @grid-columns));
+    padding-right: percentage((@columns / @grid-columns));
+  }
+}

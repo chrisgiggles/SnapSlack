@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
 
-import App from './components/App/App.jsx';
-import ChatView from './components/ChatView/ChatView.jsx';
+import App from './components/App.jsx';
+import ChatView from './components/ChatView.jsx';
+import Dashboard from './components/Dashboard.jsx';
+import ChannelCreate from './components/ChannelCreate.jsx';
+import ChannelJoin from './components/ChannelJoin.jsx';
+
 import ChannelDashboard from './components/ChannelDashboard/ChannelDashboard.jsx';
 import ChannelAdmin from './components/ChannelAdmin/ChannelAdmin.jsx';
 import Test from './components/Test/test.jsx';
@@ -16,9 +20,17 @@ Meteor.startup( () => {
     ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={ App }>
-                <IndexRoute component={ ChannelDashboard } />
+                <IndexRoute component={ Dashboard } />
                 <Route path="channel/:channelId" component={ ChatView } />
-                <Route path="channel/:channelId/admin" component={ ChannelAdmin } />
+                <Route path="create" component={ ChannelCreate } />
+                <Route path="join" component={ ChannelJoin } />
             </Route>
         </Router>, document.getElementById('app'));
 });
+
+/*
+*                 <IndexRoute component={ ChannelDashboard } />
+ <Route path="channel/:channelId" component={ ChatView } />
+ <Route path="channel/:channelId/admin" component={ ChannelAdmin } />
+*
+* */

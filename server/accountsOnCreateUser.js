@@ -1,12 +1,13 @@
 import randomColor from './../common/utils/randomColor.js';
 
 Accounts.onCreateUser(function(options, user) {
-    console.log("accountsOnCreateUser  options -->", options);
-    console.log("accountsOnCreateUser  user -->", user);
+    //console.log("accountsOnCreateUser  options -->", options);
+    //console.log("accountsOnCreateUser  user -->", user);
     //GOOGLE
     if (user.services.google) {
         user.service = 'google';
         user.profilePicture = user.services.google.picture;
+        user.username = user.services.google.name;
     }
     //PASSWORD
     else {

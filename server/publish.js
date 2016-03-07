@@ -10,5 +10,14 @@ Meteor.publish('messages', function() {
 });
 
 Meteor.publish('users', function() {
-    return Meteor.users.find({}, {fields: {'emails': 1, 'username': 1, 'profileColor': 1, 'profilePicture': 1, 'service': 1}});
+    return Meteor.users.find({}, {fields:
+        {
+            'emails': 1,
+            'username': 1,
+            'profileColor': 1,
+            'profilePicture': 1,
+            'service': 1,
+            'status': 1
+        }
+    });
 });

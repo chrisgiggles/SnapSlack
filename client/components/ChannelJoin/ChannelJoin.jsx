@@ -27,7 +27,6 @@ class ChannelJoin extends React.Component {
 			</div>
 		);
 	}
-
 }
 
 export default ChannelJoin

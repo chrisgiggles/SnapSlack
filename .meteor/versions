@@ -18,6 +18,7 @@ caching-compiler@1.0.1-modules.8
 caching-html-compiler@1.0.3-modules.8
 callback-hook@1.0.5-modules.8
 check@1.1.1-modules.8
+coffeescript@1.0.12-modules.8
 dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
 ddp-client@1.2.2-modules.8
@@ -71,6 +72,8 @@ meteortoys:toykit@2.2.1
 minifiers-css@1.1.8-modules.8
 minifiers-js@1.1.8-modules.8
 minimongo@1.0.11-modules.8
+mizzao:timesync@0.3.4
+mizzao:user-status@0.6.6
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 modules@0.5.0-modules.8
