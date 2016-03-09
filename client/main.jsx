@@ -6,7 +6,7 @@ import App from './components/App.jsx';
 import ChatView from './components/ChatView.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import ChannelCreate from './components/ChannelCreate.jsx';
-import ChannelJoin from './components/ChannelJoin.jsx';
+import ChannelJoin from './components/ChannelListAll.jsx';
 
 import ChannelDashboard from './components/ChannelDashboard/ChannelDashboard.jsx';
 import ChannelAdmin from './components/ChannelAdmin/ChannelAdmin.jsx';
@@ -23,7 +23,7 @@ Meteor.startup( () => {
                 <IndexRoute component={ Dashboard } />
                 <Route path="channel/:channelId" component={ ChatView } />
                 <Route path="create" component={ ChannelCreate } />
-                <Route path="join" component={ ChannelJoin } />
+                <Route path="all" component={ ChannelJoin } />
             </Route>
         </Router>, document.getElementById('app'));
 });

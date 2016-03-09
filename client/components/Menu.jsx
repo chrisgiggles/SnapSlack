@@ -24,8 +24,8 @@ export default class Menu extends React.Component {
             <nav role="navigation" className="Menu">
                 <ul>
                     <li><Link to="/">Dashboard</Link></li>
+                    <li><Link to="/all">Channels</Link></li>
                     <li><Link to="/create">Create Channel</Link></li>
-                    <li><Link to="/join">Join Channel</Link></li>
                     <li><Link to="/">Manage My Channels</Link></li>
 
                     <li className="right-aligned">

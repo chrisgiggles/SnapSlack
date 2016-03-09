@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class ChatSidebarLeft extends React.Component {
 
@@ -12,10 +13,14 @@ export default class ChatSidebarLeft extends React.Component {
 
         return (
             <div className="ChatSidebarLeft">
-                <ul>
-                    <li><h3>Channels</h3></li>
-                    { channelsReady }
-                </ul>
+                <Scrollbars>
+                    <div className="inner">
+                        <ul>
+                            <li><h3>Channels</h3></li>
+                            { channelsReady }
+                        </ul>
+                    </div>
+                </Scrollbars>
             </div>
         );
     }

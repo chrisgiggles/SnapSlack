@@ -26,6 +26,18 @@ Meteor.methods({
         }
     },
 
+    leaveChannel: function(channelId) {
+        if( !Meteor.userId() ) {
+            throw new Meteor.Error("not-authorized", "You are not logged in");
+        }
+
+        if (Channels.find({_id: channelId}).count() > 0) {
+            Channels.update(channelId, { $pull: {users: Meteor.userId()} });
+        } else {
+            throw new Meteor.Error('no-document-exists', 'This channel does not exist.');
+        }
+    },
+
     deleteChannel: function(channelId) {
         // not logged in - reject
         if( !Meteor.userId() ) {

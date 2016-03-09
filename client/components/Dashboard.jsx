@@ -29,7 +29,7 @@ export default class Dashboard extends React.Component {
                         <h1>Welcome to TypeTo</h1>
                         <p>This is a chat application for when you need to share stuff quickly without creating an entirely new Slack team or can't add someone to your teams Slack (for example clients or other third parties).</p>
                         <Link to="/create">Create a new Channel</Link><br />
-                        <Link to="/join">Join a Channel</Link>
+                        <Link to="/all">Join a Channel</Link>
                     </div>
 
                     <div className="channelList panel">

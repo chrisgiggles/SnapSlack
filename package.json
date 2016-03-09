@@ -14,9 +14,12 @@
     "md5": "^2.0.0",
     "perfect-scrollbar": "^0.6.10",
     "react": "^0.14.7",
+    "react-auto-scroll": "^1.0.0",
+    "react-custom-scrollbars": "^3.0.1",
     "react-dom": "^0.14.7",
     "react-mixin": "^2.0.2",
     "react-router": "^2.0.0-rc5",
-    "react-scrollbar": "^0.3.2"
+    "react-scrollbar": "^0.3.2",
+    "react-timeago": "^2.2.1"
   }
 }

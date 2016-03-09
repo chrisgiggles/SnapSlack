@@ -6,6 +6,7 @@ import reactMixin from 'react-mixin';
 import { Channels } from './../../common/Channels/ChannelsCollection.js';
 import { Messages } from './../../common/Messages/MessagesCollection.js';
 
+import AutoScroll from 'react-auto-scroll';
 import ChatSidebarLeft from './ChatSidebarLeft.jsx';
 import ChatSidebarRight from './ChatSidebarRight.jsx';
 import ChatMessageView from './ChatMessageView.jsx';
@@ -34,11 +35,15 @@ export default class ChatView extends React.Component {
         const currentChannel = this.data.currentChannel[0];
         const currentChannelMembers = currentChannel.users.map( user => user );
 
+        const AutoScrolled = AutoScroll({
+            property: 'messages'
+        })(ChatMessageView);
+
         return (
             <div className="ChatView">
-                <ChatSidebarLeft channels={this.data.allChannels} />
-                <ChatSidebarRight channelMembers={currentChannelMembers} />
-                <ChatMessageView messages={this.data.currentChannelMessages} />
+                    <ChatSidebarLeft channels={this.data.allChannels} />
+                    <ChatSidebarRight channelMembers={currentChannelMembers} />
+                    <ChatMessageView messages={this.data.currentChannelMessages} />
                 <ChatMessageForm channelId={this.props.params.channelId} />
             </div>
         );
