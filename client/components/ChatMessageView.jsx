@@ -10,6 +10,28 @@ import ChatMessageViewHeader from './ChatMessageViewHeader.jsx';
 
 export default class ChatMessageView extends React.Component {
 
+    //Scrolly stuff
+    componentDidMount() {
+        const { scrollbars } = this.refs;
+        scrollbars.scrollToBottom();
+        window.scrollbars = scrollbars;
+    }
+
+    componentWillUpdate() {
+        const { scrollbars } = this.refs;
+        this.shouldScroll = scrollbars.getScrollHeight() === scrollbars.getClientHeight() + scrollbars.getScrollTop();
+        console.log("ChatMessageView componentWillUpdate this.shouldScroll -->", this.shouldScroll);
+    }
+
+    componentDidUpdate() {
+        const { scrollbars } = this.refs;
+        if (this.shouldScroll) {
+            scrollbars.scrollToBottom()
+        } else {
+            console.log("Scroll down to read new messages");
+        }
+    }
+
     render() {
 
         function escapeHtml(unsafeString) {
@@ -78,14 +100,14 @@ export default class ChatMessageView extends React.Component {
             );
         });
 
-        console.log("ChatMessageView render this.props.channel -->", this.props.channel);
+        //console.log("ChatMessageView render this.props.channel -->", this.props.channel);
         return (
             <div className="ChatMessageView">
                 <ChatMessageViewHeader channelName={this.props.channel.name}
                                        admin={this.props.channel.admin}
                                        id={this.props.channel._id}
                                        usersCount={this.props.channel.users.length} />
-                <Scrollbars>
+                <Scrollbars universal ref="scrollbars">
                     <div className="inner">
                         <ul>{ messages }</ul>
                     </div>

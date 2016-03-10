@@ -47,7 +47,7 @@ a {
     height: 60px;
     width: 100%;
     line-height: 60px;
-    z-index: 10;
+    z-index: 1;
 
     .logo {
         height: 60px;
@@ -330,7 +330,6 @@ a {
     background: @white;
     border-bottom: 1px solid @divider;
 
-
     .inner {
         .make-md-column(12);
         margin-top: 0;
@@ -346,13 +345,6 @@ a {
         line-height: 60px;
         display: inline-block;
         margin-left: 20px;
-    }
-
-    a {
-        margin-top: 10px;
-        float: right;
-        .button();
-        font-size: 12px;
     }
 }
 
@@ -384,13 +376,31 @@ a {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+.ReactModal__Overlay {
+    z-index: 2 !important;
+}
+
+.ChatAdminSettings {
+    display: inline-block;
+    float: right;
+    margin-top: 18px;
+
+    a {
+        .button();
+        font-size: 12px;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 .AdminBadge {
     font-size: 11px !important;
-    background: lighten(desaturate(@primary, 20), 20);
+    background: @accent;
     color: white !important;
+    font-weight: bold;
     border-radius: 2px;
-    border: 1px solid @white;
-    padding: 2px 4px;
+    border: 1px solid darken(@accent, 5);
+    padding: 1px 4px;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

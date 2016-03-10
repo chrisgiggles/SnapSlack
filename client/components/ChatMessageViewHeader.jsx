@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
+import ChatAdminSettings from './ChatAdminSettings.jsx';
 
 export default class ChatMessageViewHeader extends React.Component {
+
     render() {
         const isAdmin = Meteor.userId() === this.props.admin;
         return (
@@ -18,7 +19,7 @@ export default class ChatMessageViewHeader extends React.Component {
 
                     </div>
                     { isAdmin === true
-                        ? <Link to={"/channel/" + this.props.id + "/settings"}>Settings</Link>
+                        ? <ChatAdminSettings />
                         : null }
                 </div>
             </div>

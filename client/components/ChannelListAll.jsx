@@ -66,7 +66,6 @@ export default class ChannelJoin extends React.Component {
                 return (
                     <li key={i}>
                         <Link to={"/channel/" + channel._id}>{channel.name}</Link>
-                        <Link to={"/channel/" + channel._id + "/settings"}>Settings</Link>
                     </li>
                 );
             }

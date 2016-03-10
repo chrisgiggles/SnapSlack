@@ -6,6 +6,10 @@ import reactMixin from 'react-mixin';
 import { Channels } from './../../common/Channels/ChannelsCollection.js';
 
 export default class Dashboard extends React.Component {
+
+    //Create a state for hiding and showing CreateChannel
+    //State for which list to show
+
     getMeteorData() {
         const channelsHandle = Meteor.subscribe('channels');
 

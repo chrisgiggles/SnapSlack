@@ -29,7 +29,7 @@ export default class ChatSidebarRight extends React.Component {
         
         return (
             <div className="ChatSidebarRight">
-                <Scrollbars>
+                <Scrollbars universal>
                     <div className="inner">
                         <ul>
                             <li><h3>Members</h3></li>
