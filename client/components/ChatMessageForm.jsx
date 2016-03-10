@@ -2,22 +2,22 @@ import React from 'react';
 
 export default class ChatMessageForm extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: ''
+    handleKeydown(e) {
+        //Enter
+        if (e.keyCode === 13) {
+            this.handleSubmit(e);
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        const text = e.target[0].value;
+        const text = this.refs.textfield.value;
         const channelId = this.props.channelId;
 
         if( text.trim() ) {
             Meteor.call('newMessage', channelId, text);
-            e.target[0].value = '';
+            this.refs.textfield.value = '';
         }
     }
 
@@ -25,7 +25,8 @@ export default class ChatMessageForm extends React.Component {
         return (
             <div className="ChatMessageForm">
                 <form action="#" onSubmit={ (e) => {this.handleSubmit(e)} }>
-                    <textarea name="textfield"/><input type="submit" value="Send"/>
+                    <textarea name="textfield" ref="textfield" onKeyDown={ (e) => { this.handleKeydown(e) } }/>
+                    <input type="submit" value="Send"/>
                 </form>
             </div>
         );

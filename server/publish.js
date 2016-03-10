@@ -6,7 +6,9 @@ Meteor.publish('channels', function() {
 });
 
 Meteor.publish('messages', function() {
-    return Messages.find({});
+    return Messages.find({}, {
+        sort: { time: 1 }
+    });
 });
 
 Meteor.publish('users', function() {

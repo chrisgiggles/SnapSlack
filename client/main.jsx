@@ -22,6 +22,7 @@ Meteor.startup( () => {
             <Route path="/" component={ App }>
                 <IndexRoute component={ Dashboard } />
                 <Route path="channel/:channelId" component={ ChatView } />
+                <Route path="channel/:channelId/settings" component={ ChatView } />
                 <Route path="create" component={ ChannelCreate } />
                 <Route path="all" component={ ChannelJoin } />
             </Route>

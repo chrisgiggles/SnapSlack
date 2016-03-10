@@ -1,27 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Avatar from './Avatar.jsx';
 import testPatterns from './../../common/utils/testPatterns.js';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TimeAgo from 'react-timeago';
 
-export default class ChatMessageView extends React.Component {
+import Avatar from './Avatar.jsx';
+import AdminBadge from './AdminBadge.jsx';
+import ChatMessageViewHeader from './ChatMessageViewHeader.jsx';
 
-    //constructor(props) {
-    //    super(props);
-    //}
-    //
-    //componentDidMount() {
-    //    this.refs.container.style = 'height: ' + this.refs.list.offsetHeight + 'px';
-    //
-    //}
-    //
-    //componentDidUpdate() {
-    //    console.log(this.refs.container.offsetHeight, this.refs.list.offsetHeight)
-    //    this.refs.container.style = 'height: ' + this.refs.list.offsetHeight + 'px';
-    //    this.refs.container.scrollTop = 200;
-    //
-    //}
+export default class ChatMessageView extends React.Component {
 
     render() {
 
@@ -42,6 +29,8 @@ export default class ChatMessageView extends React.Component {
             const username = msg.userName;
 
             const msgType = testPatterns(text);
+
+            const isAdmin = userId === this.props.channel.admin;
 
             //Refactor into the testpatterns util function and rename it
             const linkText = function(text) {
@@ -64,10 +53,16 @@ export default class ChatMessageView extends React.Component {
             };
 
             return (
-                <li key={i}>
-                    <Avatar userId={userId}/>
-                    <div class="message-area">
-                        <span>{username} - <TimeAgo date={ msg.time } minPeriod={ 60 } /></span>
+                <li key={i} className="message">
+                    <div className="message-avatar">
+                        <Avatar userId={userId}/>
+                    </div>
+
+                    <div className="message-text">
+
+                        <span>{username} <AdminBadge isAdmin={isAdmin}/> - </span>
+                        <span> <TimeAgo date={ msg.time } minPeriod={ 60 } /></span>
+
                         {msgType.link
                             ? <p dangerouslySetInnerHTML={ linkText(text) } />
                             : <p>{msg.text}</p>}
@@ -78,40 +73,29 @@ export default class ChatMessageView extends React.Component {
                             ? <div className="chatVideoWrapper" dangerouslySetInnerHTML={ youtube(text) }></div>
                             : ''}
                     </div>
+
                 </li>
             );
         });
 
+        console.log("ChatMessageView render this.props.channel -->", this.props.channel);
         return (
             <div className="ChatMessageView">
+                <ChatMessageViewHeader channelName={this.props.channel.name}
+                                       admin={this.props.channel.admin}
+                                       id={this.props.channel._id}
+                                       usersCount={this.props.channel.users.length} />
                 <Scrollbars>
                     <div className="inner">
                         <ul>{ messages }</ul>
                     </div>
                 </Scrollbars>
-
             </div>
         );
     }
 }
 
 ChatMessageView.propTypes = {
-    messages: React.PropTypes.array.isRequired
+    messages: React.PropTypes.array.isRequired,
+    channel: React.PropTypes.any.isRequired
 };
-
-
-//const AutoScrolled = AutoScroll({
-//    property: 'messages'
-//})(React.createClass({
-//    displayName: 'scrollable',
-//    propTypes: {
-//        messages: React.PropTypes.array.isRequired
-//    },
-//    render: function render() {
-//        return (
-//            <div className="inner">
-//                <ul ref="list">{ this.props.messages }</ul>
-//            </div>
-//        );
-//    }
-//}));
