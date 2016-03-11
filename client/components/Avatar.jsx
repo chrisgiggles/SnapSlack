@@ -16,6 +16,7 @@ export default class Avatar extends React.Component {
         let color;
         let letter;
         let style;
+        const className = this.props.size === 'small' ? 'Avatar small' : 'Avatar';
 
         if (user !== undefined && user.service === 'google') {
             avatar = function() {
@@ -34,12 +35,13 @@ export default class Avatar extends React.Component {
             }();
         }
 
-        return <div style={style} className="Avatar">{ avatar }</div>;
+        return <div style={style} className={className}>{ avatar }</div>;
     }
 }
 
 Avatar.propTypes = {
-    userId: React.PropTypes.string
+    userId: React.PropTypes.string,
+    size: React.PropTypes.string
 };
 
 reactMixin(Avatar.prototype, ReactMeteorData);

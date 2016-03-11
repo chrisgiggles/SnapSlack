@@ -3,6 +3,7 @@ import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Avatar from './Avatar.jsx';
+import OnlineStatus from './OnlineStatus.jsx';
 
 export default class ChatSidebarRight extends React.Component {
 
@@ -20,10 +21,13 @@ export default class ChatSidebarRight extends React.Component {
             //console.log("ChatSidebarRight  member -->", member);
             const username = member.username;
             const id = member._id;
-            const status = member.status.online ? 'online' : 'offline';
+            const status = member.status.online;
 
             return (
-                <li key={i}><Avatar userId={id} />{username} - {status}</li>
+                <li key={i}>
+                    <Avatar size="small" userId={id} />
+                    {username} <OnlineStatus status={status} />
+                </li>
             );
         });
         

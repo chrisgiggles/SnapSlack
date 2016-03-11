@@ -8,10 +8,6 @@ import Dashboard from './components/Dashboard.jsx';
 import ChannelCreate from './components/ChannelCreate.jsx';
 import ChannelJoin from './components/ChannelListAll.jsx';
 
-import ChannelDashboard from './components/ChannelDashboard/ChannelDashboard.jsx';
-import ChannelAdmin from './components/ChannelAdmin/ChannelAdmin.jsx';
-import Test from './components/Test/test.jsx';
-
 Meteor.startup( () => {
     Accounts.ui.config({
         passwordSignupFields: 'USERNAME_AND_EMAIL'
@@ -22,7 +18,6 @@ Meteor.startup( () => {
             <Route path="/" component={ App }>
                 <IndexRoute component={ Dashboard } />
                 <Route path="channel/:channelId" component={ ChatView } />
-                <Route path="channel/:channelId/settings" component={ ChatView } />
                 <Route path="create" component={ ChannelCreate } />
                 <Route path="all" component={ ChannelJoin } />
             </Route>

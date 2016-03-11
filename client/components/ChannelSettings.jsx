@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Route } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
-import { Channels } from './../../../common/Channels/ChannelsCollection.js';
+import { Channels } from './../../common/Channels/ChannelsCollection.js';
 
-export default class ChannelAdmin extends React.Component {
+export default class ChannelSettings extends React.Component {
 
     getMeteorData() {
         const handler = Meteor.subscribe('channels');
@@ -38,39 +38,46 @@ export default class ChannelAdmin extends React.Component {
         }
 
         Meteor.call('changeChannel', channelId, channelMeta);
+        this.props.closeModal();
     }
 
     render() {
-        const propsChannelId = this.props.params.channelId;
 
-        const channel = this.data.channels.filter(channel => {
-            return channel._id === propsChannelId;
+        const channel = this.data.channels.filter( channel => {
+            return channel._id === this.props.id;
         })[0];
 
-        if (channel === undefined) {
-            return <p>Loading</p>;
+        if (channel === undefined) {
+            return <p>Loading</p>
         }
 
         return (
-            <div>
-                <a href="#" onClick={() => { this.handleDelete(propsChannelId) }}>
-                    Delete
-                </a>
-
-                <form onSubmit={ (e) => { this.handleSubmit(e, propsChannelId, channel) } }>
+            <div className="ChannelSettings">
+                <form onSubmit={ (e) => { this.handleSubmit(e, this.props.id, channel) } }>
                     <label htmlFor="name">Name</label>
                     <input type="text" id="name" ref="name" defaultValue={ channel.name } /><br/>
                     <label htmlFor="desc">Description</label>
                     <input type="text" id="desc" ref="desc" defaultValue={ channel.description } />
                     <input type="submit" />
                 </form>
+
+                <a href="#"
+                   className="delete"
+                   onClick={() => { this.handleDelete(this.props.id) }}>
+                    Delete This Channel
+                </a>
             </div>
         );
     }
 }
 
-ChannelAdmin.contextTypes = {
+ChannelSettings.propTypes = {
+    id: React.PropTypes.string.isRequired,
+    closeModal: React.PropTypes.func
+};
+
+ChannelSettings.contextTypes = {
     router: React.PropTypes.object
 };
 
-reactMixin(ChannelAdmin.prototype, ReactMeteorData);
+reactMixin(ChannelSettings.prototype, ReactMeteorData);

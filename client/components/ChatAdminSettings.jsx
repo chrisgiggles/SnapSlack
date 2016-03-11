@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import ChannelSettings from './ChannelSettings.jsx';
 
 export default class ChatAdminSettings extends React.Component {
     constructor(props) {
@@ -30,9 +31,13 @@ export default class ChatAdminSettings extends React.Component {
                 <Modal isOpen={ this.state.openModal}
                        onRequestClose={ () => { this.closeModal() }}>
                     <a href="#" onClick={ () => { this.closeModal() }}>Close</a>
-                    <h2>Include ChannelAdmin component in here</h2>
+                    <ChannelSettings id={this.props.id} closeModal={ () => this.closeModal() } />
                 </Modal>
             </div>
         );
     }
 }
+
+ChatAdminSettings.propTypes = {
+    id: React.PropTypes.string.isRequired
+};

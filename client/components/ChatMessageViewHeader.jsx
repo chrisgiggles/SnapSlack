@@ -19,7 +19,7 @@ export default class ChatMessageViewHeader extends React.Component {
 
                     </div>
                     { isAdmin === true
-                        ? <ChatAdminSettings />
+                        ? <ChatAdminSettings id={this.props.id}/>
                         : null }
                 </div>
             </div>
