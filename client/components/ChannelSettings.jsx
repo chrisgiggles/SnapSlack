@@ -17,8 +17,12 @@ export default class ChannelSettings extends React.Component {
     }
 
     handleDelete(channelId) {
-        Meteor.call('deleteChannel' , channelId);
-        this.context.router.push('/');
+        const answer = window.confirm('Are you sure? This will delete the channel and all messages');
+
+        if (answer === true) {
+            Meteor.call('deleteChannel' , channelId);
+            this.context.router.push('/dashboard');
+        }
     }
 
     handleSubmit(e, channelId, channel) {

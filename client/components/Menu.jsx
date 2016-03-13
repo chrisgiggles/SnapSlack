@@ -5,6 +5,7 @@ import reactMixin from 'react-mixin';
 
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import Avatar from './Avatar.jsx';
+import AccountLogin from './AccountLogin.jsx';
 
 export default class Menu extends React.Component {
 
@@ -20,20 +21,31 @@ export default class Menu extends React.Component {
     render() {
         const user = this.data.user[0];
 
-        return (
-            <nav role="navigation" className="Menu">
-                <ul>
-                    <li><Link to="/">Dashboard</Link></li>
-                    <li><Link to="/all">Channels</Link></li>
-                    <li><Link to="/create">Create Channel</Link></li>
+        if (user) {
+            return (
+                <nav role="navigation" className="Menu">
+                    <ul>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><Link to="/dashboard/create">Create Channel</Link></li>
 
-                    <li className="right-aligned">
-                        <AccountsUIWrapper />
-                        { user ? <Avatar userId={ user._id } /> : ''}
-                    </li>
-                </ul>
-            </nav>
-        );
+                        <li className="right-aligned">
+                            <AccountsUIWrapper />
+                            { user ? <Avatar userId={ user._id } /> : ''}
+                        </li>
+                    </ul>
+                </nav>
+            );
+        } else {
+            return (
+                <nav role="navigation" className="Menu">
+                    <ul>
+                        <li className="right-aligned login">
+                            <AccountLogin />
+                        </li>
+                    </ul>
+                </nav>
+            );
+        }
     }
 }
 

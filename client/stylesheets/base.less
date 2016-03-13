@@ -31,6 +31,46 @@ a {
     }
 }
 
+.text-center {
+    text-align: center;
+}
+
+//FORMS
+
+input {
+    margin: 5px 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-radius: 3px;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid @divider;
+
+    //Outline
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+input[type=submit] {
+    width: 100%;
+    padding: 12px;
+    color: @white;
+    background: @primary;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+label {
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 .AppTemplate {
@@ -89,6 +129,72 @@ a {
             text-decoration: underline;
         }
     }
+
+    .login {
+        color: @text;
+        input {
+            display: inline-block;
+            width: 140px;
+            padding: 10px;
+            margin-right: 20px;
+            font-size: 12px;
+            border: 1px solid darken(@dark-primary, 5);
+        }
+
+        input[type="submit"] {
+            padding: 11px;
+            width: inherit;
+            border: none
+        }
+
+        label {
+            display: none;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+//Ex Index
+.PageTemplate {
+    padding-top: 80px;
+    .container-fixed();
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+.PageIndex {
+    .clearfix();
+    background: @white;
+    padding-bottom: 20px;
+
+    .row {
+        .make-row()
+    }
+
+    .mission {
+        color: @white;
+        .make-md-column(8);
+    }
+
+    .account {
+        .make-md-column(4);
+        .make-md-column-offset(4);
+    }
+
+    .panel {
+        background: @light-primary;
+        padding: 20px;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+.AccountLogin {
+
+}
+
+.AccountSignup {
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -344,6 +450,7 @@ a {
         position: absolute;
         right: 8px;
         top: 8px;
+        margin: 0;
         width: 80px;
         height: 42px;
         color: @white;
@@ -382,9 +489,19 @@ a {
 ///////////////////////////////////////////////////////////////////////////////
 
 .Dashboard {
-    padding-top: 80px;
-    .container-fixed();
-    .clearfix();
+    padding-top: 60px;
+    height: 100%;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+
+        li p {
+            overflow: hidden;
+        }
+    }
 
     .row {
         .make-row();

@@ -53,7 +53,6 @@ export default class ChannelCreate extends React.Component {
                             <label htmlFor="description">Description</label><br/>
                             <textarea name="description" id="description" rows="3"
                                       onChange={ (e) => {this.handleChange(e, 'description')} }>
-
                             </textarea>
                             <br/>
                             <input type="submit"/>

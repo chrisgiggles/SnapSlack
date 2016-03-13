@@ -16,7 +16,7 @@ export default class ChatView extends React.Component {
     getMeteorData() {
         const channelsHandle = Meteor.subscribe('channels');
         const messagesHandle = Meteor.subscribe('messages');
-        
+
         if (channelsHandle.ready && messagesHandle.ready) {
             return {
                 //Get joined channels
