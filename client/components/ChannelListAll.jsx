@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
-
+import Scrollbars from 'react-custom-scrollbars';
 import { Channels } from './../../common/Channels/ChannelsCollection.js';
 
 export default class ChannelJoin extends React.Component {
@@ -72,15 +72,15 @@ export default class ChannelJoin extends React.Component {
         });
 
         return (
-            <div className="ChannelJoin">
-                <div className="row">
-                    <div className="centered">
+            <div className="ChannelListAll">
+                <Scrollbars>
+                    <div className="inner">
                         <h2>Created Channels</h2>
                         <ul>{adminChannels}</ul>
                         <h2>All channels</h2>
                         <ul>{channels}</ul>
                     </div>
-                </div>
+                </Scrollbars>
             </div>
         );
     }

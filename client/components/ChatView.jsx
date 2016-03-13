@@ -27,6 +27,15 @@ export default class ChatView extends React.Component {
         }
     }
 
+    isMember(channel, userId) {
+        //Check if the current logged in user is a member of this channel
+        const inArray = channel.users.filter( user => {
+            return user === userId;
+        });
+
+        return inArray.length > 0;
+    }
+
     render() {
         if ( !this.data.currentChannel[0] ) {
             return <p>Loading</p>
@@ -35,12 +44,14 @@ export default class ChatView extends React.Component {
         const currentChannel = this.data.currentChannel[0];
         const currentChannelMembers = currentChannel.users.map( user => user );
 
+        const isMember = this.isMember(currentChannel, Meteor.userId());
+        
         return (
             <div className="ChatView">
                 <ChatSidebarLeft channels={this.data.allChannels} />
                 <ChatSidebarRight channelMembers={currentChannelMembers} />
                 <ChatMessageView messages={this.data.currentChannelMessages} channel={currentChannel} />
-                <ChatMessageForm channelId={this.props.params.channelId} />
+                <ChatMessageForm isMember={isMember} channelId={this.props.params.channelId} />
             </div>
         );
     }

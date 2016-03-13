@@ -32,7 +32,6 @@ export default class Dashboard extends React.Component {
 
         return (
             <div className="Dashboard">
-                <AccountLogout/>
                 <ChatSidebarLeft channels={ this.data.joinedChannels }/>
                 { content }
             </div>

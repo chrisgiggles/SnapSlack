@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
 
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import Avatar from './Avatar.jsx';
 import AccountLogin from './AccountLogin.jsx';
+import AccountUI from './AccountUI.jsx';
 
 export default class Menu extends React.Component {
 
@@ -29,7 +29,7 @@ export default class Menu extends React.Component {
                         <li><Link to="/dashboard/create">Create Channel</Link></li>
 
                         <li className="right-aligned">
-                            <AccountsUIWrapper />
+                            <AccountUI user={ user } />
                             { user ? <Avatar userId={ user._id } /> : ''}
                         </li>
                     </ul>

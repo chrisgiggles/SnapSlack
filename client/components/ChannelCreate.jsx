@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Scrollbars from 'react-custom-scrollbars';
 export default class ChannelCreate extends React.Component {
 
     constructor(props) {
@@ -38,8 +38,8 @@ export default class ChannelCreate extends React.Component {
     render() {
         return (
             <div className="ChannelCreate">
-                <div className="row">
-                    <div className="centered">
+                <Scrollbars>
+                    <div className="inner">
                         <h1>Create a new channel</h1>
                         <form
                             action="#"
@@ -51,14 +51,15 @@ export default class ChannelCreate extends React.Component {
                                 onChange={ (e) => {this.handleChange(e, 'name')} } />
                             <br/>
                             <label htmlFor="description">Description</label><br/>
-                            <textarea name="description" id="description" rows="3"
-                                      onChange={ (e) => {this.handleChange(e, 'description')} }>
-                            </textarea>
+                            <input type="text"
+                                   id="description"
+                                   onChange={ (e) => {this.handleChange(e, 'description')} }>
+                            </input>
                             <br/>
                             <input type="submit"/>
                         </form>
                     </div>
-                </div>
+                </Scrollbars>
             </div>
         );
     }

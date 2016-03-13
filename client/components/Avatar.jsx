@@ -2,7 +2,6 @@ import React from 'react';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
 
-
 export default class Avatar extends React.Component {
 
     getMeteorData () {
@@ -16,6 +15,7 @@ export default class Avatar extends React.Component {
         let color;
         let letter;
         let style;
+
         const className = this.props.size === 'small' ? 'Avatar small' : 'Avatar';
 
         if (user !== undefined && user.service === 'google') {

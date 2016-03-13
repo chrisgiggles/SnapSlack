@@ -11,10 +11,9 @@ export default class PageIndex extends React.Component {
             <div className="PageIndex PageTemplate">
                 <div className="row">
                     <h1 className="text-center">Ad hoc team messaging with TypeTo</h1>
+                    <p className="text-center">When you need to share stuff with people outside of your core team on Slack</p>
                     <div className="account">
                         <div className="panel">
-                            <p>Already have an account?</p>
-                            <Link to="/">Sign in instead</Link>
                             <h2>Sign up</h2>
                             <AccountSignup />
                         </div>

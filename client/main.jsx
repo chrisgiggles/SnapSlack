@@ -9,7 +9,7 @@ import AccountSignup from './components/AccountSignup.jsx';
 import ChatView from './components/ChatView.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import ChannelCreate from './components/ChannelCreate.jsx';
-import ChannelJoin from './components/ChannelListAll.jsx';
+import ChannelListAll from './components/ChannelListAll.jsx';
 
 Meteor.startup( () => {
     Accounts.ui.config({
@@ -32,7 +32,7 @@ Meteor.startup( () => {
                 <Route path="signup" component={ AccountSignup } />
 
                 <Route path="dashboard" component={ Dashboard } onEnter={requireAuth}>
-                    <IndexRoute components={ {content: ChannelJoin} } />
+                    <IndexRoute components={ {content: ChannelListAll} } />
                     <Route path="create" components={ {content: ChannelCreate} } />
                 </Route>
 

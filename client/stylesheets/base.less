@@ -167,13 +167,8 @@ label {
     background: @white;
     padding-bottom: 20px;
 
-    .row {
-        .make-row()
-    }
-
-    .mission {
-        color: @white;
-        .make-md-column(8);
+    h1 {
+        margin: 10px 0;
     }
 
     .account {
@@ -195,6 +190,29 @@ label {
 
 .AccountSignup {
 
+}
+
+.AccountUI {
+    position: relative;
+    display: inline-block;
+
+    .dropdown {
+        position: absolute;
+        line-height: 24px;
+        width: 140px;
+        padding: 10px;
+        top: 60px;
+        right: 0;
+        background: lighten(@dark-primary, 5);
+        border-top: 1px solid darken(@dark-primary, 10);
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+
+        a {
+            display: block;
+            text-align: center;
+        }
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -317,10 +335,9 @@ label {
             text-decoration: none;
             font-weight: bold;
             color: lighten(@text, 20);
-        }
-
-        &:hover {
-            background: @white;
+            &:hover {
+                color: @primary;
+            }
         }
     }
 
@@ -460,6 +477,21 @@ label {
         font-size: 12px;
         font-weight: bold;
     }
+
+    .not-member {
+        text-align: center;
+        margin: 0 auto;
+        line-height: 80px;
+        span {
+            font-weight: bold;
+            color: @danger;
+        }
+        button {
+            line-height: normal;
+            margin: 0 10px;
+            color: @text;
+        }
+    }
 }
 
 .ChatMessageViewHeader {
@@ -503,23 +535,23 @@ label {
         }
     }
 
-    .row {
-        .make-row();
-    }
-
-    .channelList {
-        .make-md-column(6);
-    }
-
-    .more {
-        .make-md-column(6);
-
-        a {
-            .button();
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-    }
+    //.row {
+    //    .make-row();
+    //}
+    //
+    //.channelList {
+    //    .make-md-column(6);
+    //}
+    //
+    //.more {
+    //    .make-md-column(6);
+    //
+    //    a {
+    //        .button();
+    //        display: inline-block;
+    //        margin-bottom: 10px;
+    //    }
+    //}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -554,15 +586,15 @@ label {
 ///////////////////////////////////////////////////////////////////////////////
 
 .ChannelCreate {
-    padding-top: 80px;
-    .container-fixed();
-    .clearfix();
+    height: 100%;
+    overflow: hidden;
 
     .row {
         .make-row();
     }
 
-    .centered {
+    .inner {
+        margin: 20px 0;
         .make-md-column(6);
         .make-md-column-offset(3);
         background: @light-primary;
@@ -580,16 +612,12 @@ label {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-.ChannelJoin {
-    padding-top: 80px;
-    .container-fixed();
-    .clearfix();
+.ChannelListAll {
+    height: 100%;
+    overflow: hidden;
 
-    .row {
-        .make-row();
-    }
-
-    .centered {
+    .inner {
+        margin: 20px 0;
         .make-md-column(6);
         .make-md-column-offset(3);
         background: @light-primary;
