@@ -12,10 +12,6 @@ import ChannelCreate from './components/ChannelCreate.jsx';
 import ChannelListAll from './components/ChannelListAll.jsx';
 
 Meteor.startup( () => {
-    Accounts.ui.config({
-        passwordSignupFields: 'USERNAME_AND_EMAIL'
-    });
-
     function requireAuth(nextState, replace) {
         if ( !Meteor.userId() ) {
             replace({
@@ -40,10 +36,3 @@ Meteor.startup( () => {
             </Route>
         </Router>, document.getElementById('app'));
 });
-
-/*
-*                 <IndexRoute component={ ChannelDashboard } />
- <Route path="channel/:channelId" component={ ChatView } />
- <Route path="channel/:channelId/admin" component={ ChannelAdmin } />
-*
-* */

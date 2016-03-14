@@ -1,10 +1,11 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import AccountLoginGoogle from './AccountLoginGoogle.jsx';
 
 class AccountLogin extends React.Component {
 
     componentWillMount() {
-        if(Meteor.userId()) {
+        if(Meteor.userId() && this.context.router.isActive('/', true)) {
             browserHistory.push('/dashboard');
         }
     }
@@ -25,6 +26,7 @@ class AccountLogin extends React.Component {
     render() {
         return (
             <div className="AccountLogin">
+                <AccountLoginGoogle />
                 <form action="#" onSubmit={ (e) => { this.handleSubmit(e) }}>
                     <label htmlFor="email">E-mail: </label>
                     <input type="text" ref="email" name="email" id="email" placeholder="E-mail"/>
@@ -36,5 +38,9 @@ class AccountLogin extends React.Component {
         );
     }
 }
+
+AccountLogin.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default AccountLogin;

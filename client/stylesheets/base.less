@@ -105,6 +105,7 @@ label {
     .make-md-column(10);
 
     ul {
+        .clearfix();
         padding: 0;
         margin: 0;
         list-style: none;
@@ -135,14 +136,14 @@ label {
         input {
             display: inline-block;
             width: 140px;
-            padding: 10px;
+            padding: 13px;
             margin-right: 20px;
             font-size: 12px;
             border: 1px solid darken(@dark-primary, 5);
         }
 
         input[type="submit"] {
-            padding: 11px;
+            padding: 13px;
             width: inherit;
             border: none
         }
@@ -184,12 +185,27 @@ label {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-.AccountLogin {
+.Menu .AccountLogin {
+    form {
+        float: right;
+    }
 
+    span {
+        line-height: 60px;
+    }
 }
 
 .AccountSignup {
 
+}
+
+a.AccountLoginGoogle {
+    padding-right: 20px;
+    img {
+        margin-top: 6px;
+        width: 193px;
+        height: 48px;
+    }
 }
 
 .AccountUI {
@@ -212,41 +228,6 @@ label {
             display: block;
             text-align: center;
         }
-    }
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-.AccountsUIWrapper {
-    position: relative;
-    display: inline-block;
-
-    #login-buttons a, .accounts-dialog a {
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    #login-buttons {
-        line-height: 60px;
-    }
-    #login-link-and-dropdown-list {
-        position: relative;
-    }
-
-    #login-dropdown-list {
-        line-height: normal;
-        top: 60px;
-        right: 0;
-        left: inherit;
-
-        a {
-            color: @text;
-        }
-    }
-
-    #login-buttons .login-close-text {
     }
 }
 
@@ -417,10 +398,13 @@ label {
         }
     }
 
-    .chatImage img {
-        max-width: 500px;
-        max-height: 200px;
-        margin-left: 60px;
+    .chatImage {
+        height: 200px;
+        img {
+            max-width: 500px;
+            max-height: 200px;
+            margin-left: 60px;
+        }
     }
 
     .chatVideoWrapper {
@@ -639,5 +623,39 @@ label {
 
     button {
         float: right;
+        width: 80px;
+        height: 26px;
+        margin: -3px;
+        color: @white;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        font-weight: bold;
+        &.join {
+            background: @primary;
+        }
+        &.leave {
+            background: @danger;
+        }
     }
+
+    .ChatAdminSettings {
+        margin-top: 0;
+        a {
+            float: right;
+            width: 80px;
+            height: 26px;
+            margin: -3px;
+            color: @white;
+            text-align: center;
+            padding: 0;
+            line-height: 26px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            background: @dark-primary;
+        }
+    }
+
 }

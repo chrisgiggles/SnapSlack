@@ -3,6 +3,9 @@ import { Link } from 'react-router';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import reactMixin from 'react-mixin';
 import Scrollbars from 'react-custom-scrollbars';
+
+import ChatAdminSettings from './ChatAdminSettings.jsx';
+
 import { Channels } from './../../common/Channels/ChannelsCollection.js';
 
 export default class ChannelJoin extends React.Component {
@@ -50,10 +53,9 @@ export default class ChannelJoin extends React.Component {
                 return (
                     <li key={i}>
                         <Link to={"/channel/" + channel._id}>{channel.name}</Link>
-                        { isUserAdmin
-                            ? 'You are the admin for this channel' : isUserMember
-                            ? <button onClick={ (e) => {this.leaveChannel(e, channel._id)} }>Leave</button>
-                            : <button onClick={ (e) => {this.joinChannel(e, channel._id)} }>Join</button>
+                        { isUserMember
+                            ? <button className="leave" onClick={ (e) => {this.leaveChannel(e, channel._id)} }>Leave</button>
+                            : <button className="join" onClick={ (e) => {this.joinChannel(e, channel._id)} }>Join</button>
                         }
                     </li>
                 );
@@ -66,6 +68,7 @@ export default class ChannelJoin extends React.Component {
                 return (
                     <li key={i}>
                         <Link to={"/channel/" + channel._id}>{channel.name}</Link>
+                        <ChatAdminSettings id={channel._id}/>
                     </li>
                 );
             }
